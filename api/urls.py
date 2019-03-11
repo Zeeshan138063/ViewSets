@@ -19,5 +19,12 @@ from .views import TodoViewSet
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('', TodoViewSet, base_name='todos')
-urlpatterns = router.urls
+
+urlpatterns =[
+    path('users/', views.UserList.as_view()),
+    path('users/<int:pk>/', views.UserDetail.as_view()),
+    path('snippets/', views.SnippetList.as_view()),
+    path('snippets/<int:pk>/', views.SnippetDetail.as_view()),
+]
+urlpatterns += router.urls
 
