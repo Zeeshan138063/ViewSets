@@ -59,7 +59,8 @@ def api_root(request, format=None):
         'users-list': reverse('user-list', request=request, format=format),
         # 'users': reverse('user', request=request, format=format),
         # 'snippets': reverse('snippet', request=request, format=format),
-        'snippets-list': reverse('snippest-list', request=request, format=format)
+        'snippets-list': reverse('snippest-list', request=request, format=format),
+        # 'todoViewSet': reverse(r'snip', request=request, format=format)
 
     })
 

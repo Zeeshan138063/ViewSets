@@ -1,5 +1,5 @@
 # api/urls.py
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 # urlpatterns = [
@@ -18,14 +18,17 @@ from .views import TodoViewSet
 
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
-router.register('', TodoViewSet, base_name='todos')
+router.register('todos', TodoViewSet, base_name='todos')
+router.register('snip', views.TodoViewSet)
+
 
 urlpatterns =[
-    path('', views.api_root),
-    path('users/', views.UserList.as_view() , name='user-list'),
-    path('users/<int:pk>/', views.UserDetail.as_view(),name='user'),
-    path('snippets/', views.SnippetList.as_view(),name='snippest-list'),
-    path('snippets/<int:pk>/', views.SnippetDetail.as_view(),name='snippest'),
+    # path('', views.api_root),
+    path('', include(router.urls)),
+    # path('users/', views.UserList.as_view() , name='user-list'),
+    # path('users/<int:pk>/', views.UserDetail.as_view(),name='user'),
+    # path('snippets/', views.SnippetList.as_view(),name='snippest-list'),
+    # path('snippets/<int:pk>/', views.SnippetDetail.as_view(),name='snippest'),
 ]
-urlpatterns += router.urls
+# urlpatterns += router.urls
 
