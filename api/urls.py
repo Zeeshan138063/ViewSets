@@ -21,10 +21,11 @@ router = DefaultRouter()
 router.register('', TodoViewSet, base_name='todos')
 
 urlpatterns =[
-    path('users/', views.UserList.as_view()),
-    path('users/<int:pk>/', views.UserDetail.as_view()),
-    path('snippets/', views.SnippetList.as_view()),
-    path('snippets/<int:pk>/', views.SnippetDetail.as_view()),
+    path('', views.api_root),
+    path('users/', views.UserList.as_view() , name='user-list'),
+    path('users/<int:pk>/', views.UserDetail.as_view(),name='user'),
+    path('snippets/', views.SnippetList.as_view(),name='snippest-list'),
+    path('snippets/<int:pk>/', views.SnippetDetail.as_view(),name='snippest'),
 ]
 urlpatterns += router.urls
 
